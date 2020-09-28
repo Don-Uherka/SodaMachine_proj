@@ -16,48 +16,52 @@ namespace SodaMachine
         public SodaMachine()
         {
             inventory = new List<Can>();
-            Can Cola = new Can();
-            Can RootBeer = new Can();
-            Can OrangeSoda = new Can();
             for (int i = 0; i < 20; i++)
             {
+                Can Cola = new Can();
+                Can RootBeer = new Can();
+                Can OrangeSoda = new Can();
                 inventory.Add(Cola);
                 inventory.Add(RootBeer);
                 inventory.Add(OrangeSoda);
             }
-          
-
             register = new List<Coin>();
-            Coin Penny = new Coin();
-            Coin Nickle = new Coin();
-            Coin Dime = new Coin();
-            Coin Quarter = new Coin();
             for (int i = 0; i < 50; i++)
             {
+                Coin Penny = new Coin();
                 register.Add(Penny);
             }
             for (int i = 0; i < 20; i++)
             {
+                Coin Nickle = new Coin();
                 register.Add(Nickle);
             }
             for (int i = 0; i < 10; i++)
             {
+                Coin Dime = new Coin();
                 register.Add(Dime);
             }
             for (int i = 0; i < 20; i++)
             {
+                Coin Quarter = new Coin();
                 register.Add(Quarter);
             }
             
         }
 
         //methods
-        public void Purchase(string sodaSelection, List<Coin> payment)
+        public bool EnoughMoneyForPurchase(double moneyCustomerPaid, Can canselected)
         {
-            //use string parameter to find the cost of that soda
-            
+            if (moneyCustomerPaid > canselected.Cost)
+            {
+                return true;
+            }
+            return false;
         }
-
+        public void ReturnMoneyToCustomer(List<Coin> coinsGivenByCustomer, Customer customer)
+        {
+            customer.wallet.coins.AddRange(coinsGivenByCustomer);
+        }
        
         public double DetermineCoinValue(List<Coin> coins)
         {

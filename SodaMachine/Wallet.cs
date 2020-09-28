@@ -17,14 +17,29 @@ namespace SodaMachine
         public Wallet()
         {
             coins = new List<Coin>();
-            Coin Penny = new Coin();
             Coin Nickle = new Coin();
             Coin Dime = new Coin();
             Coin Quarter = new Coin();
-            coins.Add(Penny);
-            coins.Add(Nickle);
-            coins.Add(Dime);
-            coins.Add(Quarter);
+            for (int i = 0; i < 50; i++)
+            {
+                Penny penny = new Penny();
+                coins.Add(penny);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                coins.Add(Nickle);
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                coins.Add(Dime);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                coins.Add(Quarter);
+            }
+            
+            
+           
         }
 
         //methods
